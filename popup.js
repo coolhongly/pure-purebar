@@ -20,6 +20,14 @@ $(document).ready(function () {
             return false; //extra caution, may not be necessary
         }
     })
+
+	$('#GoogleSubmit').submit(function(ev) {
+	    ev.preventDefault(); // to stop the form from submitting
+	    /* Validations go here */
+	    var query = document.getElementById("GoogleQuery").value;
+	    console.log(query);
+	});
+
 })
 
 function resume() {
