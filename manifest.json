@@ -16,6 +16,7 @@
     "default_popup": "popup.html"
   },
   "permissions": [
+      "http://www.purestorage.com/",
       "alarms",
       "storage",
       "tabs"

@@ -26,9 +26,22 @@ $(document).ready(function () {
 	    /* Validations go here */
 	    var query = document.getElementById("GoogleQuery").value;
 	    console.log(query);
+	    googleSearch(query);
 	});
 
 })
+
+function googleSearch(query) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		document.getElementById("GoogleResult").innerHTML = xhttp.responseText
+	       // Action to be performed when the document is read;
+	    }
+	};
+	xhttp.open("GET", "http://www.purestorage.com", true);
+	xhttp.send();
+}
 
 function resume() {
     chrome.storage.local.get("username", function(name) {
