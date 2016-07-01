@@ -23,13 +23,17 @@ $(document).ready(function () {
 })
 
 function resume() {
-    chrome.storage.sync.get("name", function(name) {
+    chrome.storage.local.get("username", function(name) {
         if (chrome.runtime.error) {
             console.log("Runtime error.");
         }
 
-        console.log("retrive name " + name + " from storage");
-        displayName(name);
+        console.log("retrive name " + name.username + " from storage");
+
+	/* Chrome.storage.local.get() returns an object with items in their
+	 *  key-value mappings, so you have to use the index of key
+	 */
+        displayName(name.username);
     });
 }
 
@@ -38,7 +42,7 @@ function setName() {
     var nameSet = document.getElementById("nameSet");
     var name = nameSet.value;
 
-    chrome.storage.sync.set({"name": name}, function() {
+    chrome.storage.local.set({"username": name}, function() {
         if (chrome.runtime.error) {
             console.log("Runtime error.");
         }
